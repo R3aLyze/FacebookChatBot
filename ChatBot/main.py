@@ -24,6 +24,34 @@ class MessageBot(Client):
                 pass
 
     #Reply to User
-    def sendMsg():
+        def sendMsg():
+            if(author_id != self.uid):
+                self.send(Message(text=reply), thread_id=thread_id, thread_type=thread_type)
+
+        #Send Message
         if(author_id != self.uid):
-            self.send(Message(text=reply))
+            if("hi" in msg):
+                reply = "Hello!"
+                sendMsg()
+            elif("Crazy" or "crazy" in msg):
+                reply = "Crazy? I was Crazy Once. They Locked me in a room. A rubber room. A rubber room with rats. And rats make me crazy."
+                sendMsg()
+            else:
+                pass
+
+
+session_cookies = {
+    "sb" : "",
+    "fr" : "",
+    "c_user" : "",
+    "datr" : "",
+    "xs" : "",
+}
+
+bot = MessageBot('EMAIL', 'PASSWORD', session_cookies=session_cookies)
+print(bot.isLoggedIn())
+
+try:
+    bot.listen()
+except:
+    bot.listen()
